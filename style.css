@@ -1,0 +1,31 @@
+.invitation-image {
+    width: 100%;
+    text-align: center;
+
+    border-radius: 60px !important;
+    overflow: hidden;
+}
+
+.invitation-image img {
+    width: 100% !important;
+    max-width: 800px !important;
+    height: auto !important;
+    display: block;
+    margin: 0 auto;
+}
+
+.maptn {
+    background: transparent !important;
+    padding: 0 !important;
+    margin: 0;
+    border: none !important;
+    box-shadow: none !important;
+    display: inline-block;
+}
+
+.maptn img {
+    display: block;
+    width: 170px;
+    height: auto;
+    border-radius: 25px;
+}
