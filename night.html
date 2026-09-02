@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <style>
+
+            body{
+                background: black;
+                color: white;
+                text-align: center;
+                font-family: Arial;
+            }
+
+            h1{
+                color: cyan;
+                font-size: 60px;
+                text-shadow: 0 0 20px cyan;
+            }
+
+            h2{
+                color:yellow;
+            }
+
+            p{
+                font-size: 25px;
+            }
+
+            h3{
+                color: lime;
+                font-size: 30px;
+            }
+
+            button{
+                background: yellow;
+                color: black;
+                font-size: 20px;
+                padding: 10px 20px;
+                border-radius: 15px;
+                border: none;
+                cursor: pointer;
+            }
+
+            hr{
+                width: 300px;
+            }
+
+            h3{
+                color: lime;
+                font-size: 30px;
+            }
+
+            p{
+                font-weight: 700;
+                margin: auto;
+            }
+
+        </style>
+    </head>
+
+    <body>
+
+        <h2 id="hello"></h2>
+
+        <h1 id="clock"></h1>
+
+        <p id="date"></p>
+
+        <hr>
+
+        <h3> Обо мне </h3>
+
+        <p>
+            Меня завут Нурбол
+            Изучаю IT 💻.
+            Моя цель - стать программистом 🚀.
+        </p>
+        
+        <h3>Салам Нурбол 👋</h3>
+
+        <button id="button" onclick="night()">
+           🌙 Ночь наша 
+        </button>
+
+        <script>
+
+            function showTime() {
+                if (isNight) {
+                    return;
+
+                }
+
+                let now = new Date();
+                document.getElementById("clock").innerHTML = 
+                now.toLocaleTimeString("ru-Ru");
+
+                    document.getElementById("date").innerHTML = 
+                    now.toLocaleDateString("ru-Ru");
+
+                     let hour = now.getHours();
+                     if (hour <12){
+                        document.getElementById("hello").innerHTML = 
+                        "🌞 Доброе утро";
+                      } else if (hour < 18) {
+                        document.getElementById("hello").innerHTML = 
+                        "😎 Добрый день";
+                     } else {
+                        document.getElementById("hello").innerHTML = 
+                        "🌙 Добрый вечерь";
+                }
+
+                document.getElementById("hello").style.color = "yelow";
+
+            }
+
+            let isNight = false;
+
+            showTime();
+                setInterval(showTime, 1000);
+
+            
+
+        function night() {
+            if (!isNight) {
+
+                 document.body.style.background = "#020617";
+
+                 document.getElementById("hello").innerHTML = 
+                 "🌙 Ночь наша";
+                document.getElementById("hello").style.color = 
+                "deepskyblue";
+
+                document.querySelector("button").innerHTML = 
+                "🌞 Доброе утро";
+                
+                isNight = true;
+
+                } else {
+
+                    document.body.style.background = "black";
+
+                    isNight = false;
+
+                    showTime();
+
+                    document.getElementById("button").innerHTML= 
+                    "🌙 Ночь наша";
+
+                }
+
+                }
+
+        </script>
+    </body>
+</html>

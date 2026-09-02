@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <title>Дата и время</title>
+
+    <style>
+        body{
+            background: #111827;
+            color: white;
+            text-align: center;
+            font-family: Arial,sans-serif;
+            margin-top: 100px;
+        }
+
+        h1{
+            color: #0f8;
+            font-size: 48px;
+        }
+
+        #clock{
+            font-size: 80px;
+            color: #00e5ff;
+            margin: 20px;
+        }
+
+        #date{
+            font-size: 35px;
+            color: gold
+            ;
+        }
+    </style>
+</head>
+<body>
+    <h1>📆 Дата и время</h1>
+    <h2 id="clock"></h2>
+    <h3 id="date"></h3>
+    
+</body>
+
+<script>
+    function showTime() {
+        let now =new Date();
+        document.getElementById("clock").innerHTML = 
+        now.toLocaleTimeString("ru-Ru");
+
+        document.getElementById("date").innerHTML = 
+        now.toLocaleDateString("ru-Ru", {
+            weekday:"long",
+            year:"numeric",
+            month:"long",
+            day:"numeric"
+        });
+    }
+    showTime();
+    setInterval(showTime, 1000);
+</script>
+</html>

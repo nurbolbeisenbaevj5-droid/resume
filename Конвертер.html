@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Конвертер валют</title>
+
+        <style>
+            body{
+                background-color: #1f2937;
+                color: white;
+                text-align: center;
+                font-family: Arial;
+            }
+
+            h1{
+                color: gold;
+            }
+
+            input{
+                padding: 10px;
+                border-radius: 10px;
+            }
+
+            button{
+                padding: 10px 20px;
+                border-radius: 10px;
+                background: gold;
+                border: none;
+                border-radius: 10px;
+                cursor: pointer;
+            }
+
+            button:hover{
+                transform: scale(1.05);
+            }
+        </style>
+    </head>
+    <body>
+
+        <h1>💰Конвертер валют</h1>
+
+        <input type="number" id="tenge" placeholder="Введите тенге">
+
+        <br><br>
+
+        <button onclick="convert()">Перевести в доллар</button>
+
+        <h2 id="result">Ответ:</h2>
+
+        <script>
+            function convert() {
+                let tenge = Number(document.getElementById("tenge").value);
+
+                let dollar = tenge / 500;
+
+                document.getElementById("result").innerHTML =
+                "Ответ: $" + dollar.toFixed(2);
+            }
+        </script>
+
+    </body>
+</html>
