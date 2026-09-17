@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <title>Генератор паролей</title>
+
+        <style>
+
+            input{
+                width: 500px;
+                height: 60px;
+                padding: 10px;
+                font-size: 24px;
+                text-align: center;
+                border-radius: 15px;
+                border: 3px solid gold;
+                outline: none;
+            }
+
+            body{
+                background: #1e293e;
+                color: white;
+                text-align: center;
+                font-family: Arial;
+                margin-top: 80px;
+            }
+
+            h1{
+                color: gold;
+            }
+
+            input{
+                width: 300px;
+                padding: 15px;
+                font-size: 20px;
+                border-radius: 10px;
+                text-align: center;
+            }
+
+            button{
+                margin-top: 30px;
+                padding: 15px 15px;
+                font-size: 20px;
+                background: gold;
+                border: none;
+                border-radius: 10px;
+                cursor: pointer;
+            }
+
+            button:hover{
+                transform: scale(1.05);
+            }
+
+        </style>
+    </head>
+
+    <body>
+        <h1>🔐 Генератор паролей</h1>
+
+        <input
+        type="text"
+        id="password"
+        placeholder="Нажми 'Создать пароль'"
+        readonly
+        >
+        <br>
+
+        <button onclick="copyPassword()">📄 Копировать</button>
+
+        <button onclick="generate()">🔐Создать пароль</button>
+
+        <script>
+
+            function copyPassword() {
+                let password = document.getElementById("password");
+
+                alert("Пароль скопирован!");
+            }
+
+            function generate(){
+
+                let chars =
+                "ABSDEFHIJKLMNOPQRSTUVWXYZabsdefghijklmnopqrstuvwxyz0123456789!@#$";
+
+                let password = "";
+
+                for(let i=0; i<12; i++){
+                    password += chars[Math.floor(Math.random()*chars.length)];
+            
+                }
+
+                document.getElementById("password").value = password;
+
+            }
+ 
+        </script>
+    </body>
+</html>

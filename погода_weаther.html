@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+</head>
+
+<style>
+    body{
+        background: #38bdf8;
+        color: white;
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .weather{
+        background: #1e293b;
+        padding: 30px;
+        border-radius: 20px;
+        width: 340px;
+        text-align: center;
+        box-shadow: 0 0 40px rgba(56,189,248,.4);
+        transition: 0.3s;
+
+    }
+
+    .weather:hover{
+        transform: translateY(-5px);
+    }
+
+    input{
+        margin-top: 15px;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 10px;
+        font-size: 18px;
+    }
+
+    button{
+        width: 220px;
+        margin-top: 15px;
+        padding: 10px 20px;
+        background: #38bdf8;
+        color: white;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: .3s;
+    }
+
+    button:hover{
+        transform: translateY(-3px);
+        background: #0ea5e9;
+        box-shadow: 0 15px 25px rgba(0, 0, 0, .4);
+    }
+
+    button:active{
+        transform: scale(.95);
+    }
+
+    #result{
+        color: #22c55e;
+        margin-top: 25px;
+        font-size: 28px;
+        line-height: 50px;
+        opacity: 0;
+        transition: opacity .5s;
+    }
+
+    #forecast{
+        margin-top: 20px;
+    }
+
+    .day{
+        background: rgba(255, 255, 255, .08);
+        margin-top: 10px;
+        padding: 12px;
+        border-radius: 10px;
+        color: white;
+        font-size: 18px;
+    }
+
+</style>
+
+<script>
+    async function showWeather() {
+        let city = document.getElementById("city").value;
+        let result = document.getElementById("result");
+
+        let geoResponse = await fetch(
+            `https://geocoding-api.open-meteo.com/v1/search?name=${city}&count=1&language=ru&format=json`
+        );
+
+        let geoData = await geoResponse.json();
+
+        if (!geoData.results) {
+            result.innerHTML = "❌ Город не найден";
+            return;
+        }
+
+        let latitude = geoData.results[0].latitude;
+        let longitude = geoData.results[0].longitude;
+
+        result.style.opacity = "1"
+
+        let url = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m,wind_speed_10m,relative_humidity_2m,weather_code&daily=weather_code,temperature_2m_max,temperature_2m_min&forecast_days=7&timezone=auto`;
+
+        let response = await fetch(url);
+        let data = await response.json();
+
+        let forecast = document.getElementById("forecast");
+        forecast.innerHTML = "";
+        for (let i = 0; i < 7; i ++) {
+            forecast.innerHTML += `
+            <div class="day">
+                📆 ${data.daily.time[i]}<br>
+                🌡 ${data.daily.temperature_2m_max[i]}° /
+                ${data.daily.temperature_2m_min[i]}°
+                </div>
+                `;
+            }
+        let weather = "";
+
+        switch (data.current.weather_code) {
+            case 0:
+                      weather = "☀ Ясно";
+                      break;
+                case 1:
+                case 2: 
+                case 3: 
+                      weather = "⛅ Облачно";
+                      break;
+                case 61: 
+                case 63: 
+                case 65: 
+                      weather = "🌧 Дождь";
+                      break;
+                case 71: 
+                case 73: 
+                case 75: 
+                      weather = "❄ Снег";
+                      break;
+                default: 
+                      weather = "⛅ Погода"
+        }
+
+        if(city == ""){
+            result.innerHTML = "Введите город";
+        }else{
+            result.innerHTML = 
+            "📍" + city +
+            "<br>" + weather + 
+            "<br>🌡 " + data.current.temperature_2m + "°C" + 
+            "<br> 💨 Ветер: " + data.current.wind_speed_10m + "км/ч" +
+            "<br> 💧 Влажность: " + data.current.relative_humidity_2m + "%";
+        }
+    }
+
+</script>
+<body>
+
+    <div class="weather">
+        <h1>⛅ Приложения погоды</h1>
+
+        <input type="text" id="city" placeholder="Введите город">
+        <button onclick="showWeather()">
+            Узнать погоду
+        </button>
+
+        <button onclick="getLocation()">
+        </button>
+
+        <h2 id="result"></h2>
+         <div id="forecast"></div>
+
+    </div>
+
+    <script>
+         document.getElementById("city").addEventListener("keydown", function(event) {
+            if (event.key === "Enter") {
+                showWeather();
+            }
+        });
+
+        async function getLocation() {
+
+            if (!navigator.geolocation) {
+                alert("Геолокфция не поддерживается");
+                return;
+            }
+
+            navigator.geolocation.getCurrentPosition(async function(position) {
+                
+                let latitude = position.coords.latitude;
+                let longitude = position.coords.longitude;
+
+                let url = https;//api.open-meteo
+            })
+        }
+    </script>
+
+</body>
+
+</html>

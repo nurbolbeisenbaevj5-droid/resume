@@ -1,0 +1,307 @@
+html {
+    scroll-behavior: smooth;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Georgia, serif;
+    overflow-x: hidden;
+}
+
+.hero {
+    background:
+    linear-gradient(rgba(0,0,0,.0), rgba(0,0,0,.0)),
+    url("images/ChatGPT\ Image\ 22\ июл.\ 2026\ г.\,\ 03_00_12.png");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.overlay {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(0px);
+    padding: 50px;
+    border-radius: 20px;
+    text-align: center;
+    color: white;
+    max-width: 700px;
+}
+
+h1{
+    font-size: 60px;
+    margin: 20px 0;
+}
+
+p {
+    font-size: 22px;
+    line-height: 1.6;
+    margin: 15px 0;
+}
+
+button {
+    padding: 15px 35px;
+    border: none;
+    border-radius: 30px;
+    background: white;
+    color: #7b2cbf;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    transform: scale(1.05);
+}
+
+.owners {
+    margin-top: 40px;
+    text-align: center;
+    font-size: 28px;
+    font-weight: bold;
+    color: white;
+}
+
+.invitation {
+    background:
+    linear-gradient(rgba(255,248,240,.15), rgba(255,248,240,.15)),
+    url("images/timer-bg.png");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: #5b2c83;
+    padding: 80px 30px;
+    text-align: center;
+
+    opacity: 0;
+    transform: translateY(80px);
+    transition: all 0.8s ease;
+}
+
+.invitation.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.invitation h2 {
+    font-size: 42px;
+    margin-top: 32px;
+    margin-bottom: 80px;
+    }
+
+.invitation p {
+    font-size: 22px;
+    line-height: 1.8;
+}
+
+.invitation h3 {
+    margin-top: 20px;
+}
+
+.overlay {
+    animation: fadeIn 2s ease;
+}
+
+@keyframes fadeIn {
+
+    from{
+        opacity: 0;
+        transform: translateY(40px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.countdown {
+    padding: 40px 20px;
+    color: white;
+}
+
+.countdown h2 {
+    font-size: 42px;
+    margin-bottom: 40px;
+}
+
+.timer {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin-top: 40px;
+}
+.timer div {
+    width: 120px;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(8px);
+    padding: 20px;
+    border-radius: 20px;
+    backdrop-filter: blur(8px); 
+}
+
+.timer span{
+    display: block;
+    font-size: 48px;
+    font-weight: bold;
+    color: white;
+}
+
+.timer p {
+    margin-top: 10px;
+    font-size: 18px;
+    color: white;
+}
+
+/* ====== Location ======*/
+.location{
+    padding: 70px 20px;
+    text-align: center;
+    background: linear-gradient(135deg,#7b2cbf,#c77dff);
+    color: white;
+}
+
+.location h2{
+    font-size: 48px;
+    margin-bottom: 30px;
+    animation: fadeIn 1s ease;
+}
+
+.location p{
+    font-size: 26px;
+    line-height: 1.8;
+    margin-bottom: 40px;
+}
+
+.btn-map{
+    display: inline-block;
+    padding: 15px 35px;
+    background: white;
+    color: #7b2cbf;
+    text-decoration: none;
+    border-radius: 50px;
+    font-size: 20px;
+    font-weight: bold;
+    transition:all .3s ease;
+    box-shadow: 0 10px 25px rgba(0, 0, 0,.25);
+}
+
+.btn-map:hover{
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 15px 35px rgba(0, 0, 0,.35);
+}
+
+.btn-map:active{
+    transform: scale(.96);
+}
+
+.music-btn{
+    margin-top: 20px;
+    padding: 15px 35px;
+    border: none;
+    border-radius: 30px;
+    background: #fff;
+    color: #7b2cbf;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.music-btn:hover{
+    transform: translateY(-5px);
+}
+
+.play-btn{
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding-left: -2px;
+
+    width: 60px;
+    height: 60px;
+
+    border-radius: 60px;
+    border: 4px solid #444;
+    background: rgba(255, 255, 255, .9);
+
+    font-size: 42px;
+    line-height: 100px;
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition: 0.3s;
+    z-index: 9999;
+
+}
+
+.play-btn:hover{
+    transform: scale(1.1);
+}
+
+.sparkles{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    overflow:hidden;
+    z-index:998;
+}
+
+.sparkles span{
+    position:absolute;
+    color:#FFD700;
+    font-size:14px;
+    animation:sparkle 8s linear infinite;
+}
+
+.sparkles span:nth-child(1){left:10%;animation-delay:0s;}
+
+@keyframes sparkle{
+    0%{
+        transform:translateY(110vh) scale(.3);
+        opacity:0;
+    }
+
+    20%{
+        opacity:1;
+    }
+
+    100%{
+        transform:translateY(-100px) scale(1.2);
+        opacity:0;
+    }
+}
+
+.restaurant-photo{
+    width:100%;
+    max-width: 100%;
+    border-radius: 25px;
+    margin: 25px;
+    object-fit: cover;
+    box-shadow: 0 15px 35px rgba,rgba(0, 0, 0,.25);
+    border: 3px solid rgba(255, 255, 255, .3);
+    display: block;
+}
+
+.location{
+    padding: 70px 20px;
+    text-align: center;
+    color: white;
+
+    background:
+    linear-gradient(rgba(0,0,0,.0), rgba(0,0,0,.0)),
+    url("images/Millennium.png");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}

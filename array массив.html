@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Мой первый массив</title>
+</head>
+
+<body>
+
+    <h1>📚Мой первый массив</h1>
+    <button onclick="show()">Показать проект</button>
+    <h2 id="result"></h2>
+
+    <script>
+
+        let projects = [
+            "🧮 Калькулятор",
+            "⏰ Часы",
+            "💰 Конвертер",
+            "🔐 Генератор паролей",
+            "📝 ToDo list",
+        ];
+
+        function show() {
+
+            let random = Math.floor(Math.random() * projects.length);
+
+            document.getElementById("result").innerHTML =
+            projects[random];
+        }
+    </script>
+</body>
+</html>
